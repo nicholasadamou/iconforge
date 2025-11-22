@@ -1,6 +1,6 @@
 # IconForge 🔥
 
-![CI](https://github.com/nicholasadamou/iconforge/workflows/CI/badge.svg)
+![Tests](https://github.com/nicholasadamou/iconforge/workflows/Tests/badge.svg)
 [![codecov](https://codecov.io/gh/nicholasadamou/iconforge/branch/main/graph/badge.svg)](https://codecov.io/gh/nicholasadamou/iconforge)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nicholasadamou/iconforge)
 

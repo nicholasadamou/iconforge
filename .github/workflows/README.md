@@ -1,53 +1,23 @@
 # GitHub Actions Workflows
 
-This directory contains GitHub Actions workflows for continuous integration and deployment.
+This directory contains GitHub Actions workflows for continuous integration.
 
-## Available Workflows
+## Workflow
 
-### 1. CI Workflow (`ci.yml`)
+### Tests Workflow (`test.yml`)
 
-**Main workflow** that runs on every push and pull request to main/master branch.
+**Main CI workflow** that runs on every push and pull request to main/master branch.
+
+Tests across multiple Node.js versions to ensure compatibility.
 
 **Steps:**
 1. Checkout code
-2. Setup Node.js 20.x with npm cache
+2. Setup Node.js (matrix: 18.x, 20.x) with npm cache
 3. Install dependencies with `npm ci`
 4. Run ESLint linter
 5. Run tests with coverage
 6. Build Next.js application
-7. Upload coverage to Codecov (optional)
-8. Comment coverage report on PRs (optional)
-
-**Triggers:**
-- Push to `main` or `master` branch
-- Pull requests to `main` or `master` branch
-
-### 2. Test Workflow (`test.yml`)
-
-Standalone workflow focused on testing across multiple Node.js versions.
-
-**Steps:**
-1. Checkout code
-2. Setup Node.js (matrix: 18.x, 20.x)
-3. Install dependencies
-4. Run linter
-5. Run tests with coverage
-6. Upload coverage to Codecov
-
-**Triggers:**
-- Push to `main` or `master` branch
-- Pull requests to `main` or `master` branch
-
-### 3. Build Workflow (`build.yml`)
-
-Verifies that the Next.js application builds successfully.
-
-**Steps:**
-1. Checkout code
-2. Setup Node.js 20.x
-3. Install dependencies
-4. Build application
-5. Verify build output
+7. Upload coverage to Codecov (Node 20.x only)
 
 **Triggers:**
 - Push to `main` or `master` branch
@@ -62,14 +32,12 @@ Some workflows use GitHub secrets for optional features:
 
 You can add these in your repository settings: **Settings > Secrets and variables > Actions**
 
-## Status Badges
+## Status Badge
 
-Add these badges to your README to show workflow status:
+The status badge is already in the README:
 
 ```markdown
-![CI](https://github.com/nicholasadamou/iconforge/workflows/CI/badge.svg)
 ![Tests](https://github.com/nicholasadamou/iconforge/workflows/Tests/badge.svg)
-![Build](https://github.com/nicholasadamou/iconforge/workflows/Build/badge.svg)
 ```
 
 ## Local Testing

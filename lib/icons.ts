@@ -28302,4 +28302,4 @@ export const icons: Icon[] = [
   }
 ];
 
-export const defaultIcon = icons.find(i => i.id === 'heart') || icons[0];
+export const defaultIcon = icons.find(i => i.id === 'star') || icons[0];

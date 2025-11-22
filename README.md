@@ -1,8 +1,6 @@
 # IconForge 🔥
 
 ![Tests](https://github.com/nicholasadamou/iconforge/workflows/Tests/badge.svg)
-[![codecov](https://codecov.io/gh/nicholasadamou/iconforge/branch/main/graph/badge.svg)](https://codecov.io/gh/nicholasadamou/iconforge)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nicholasadamou/iconforge)
 
 A modern Next.js application for creating beautiful favicons using Font Awesome icons. Build custom favicons with real-time preview, color customization, and instant download—all in your browser.
 

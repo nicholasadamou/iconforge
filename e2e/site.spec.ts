@@ -137,3 +137,29 @@ test('studio fills the viewport and mobile panels retain the design', async ({ p
   await page.setViewportSize({ width: 1440, height: 900 });
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });
+
+test('chat providers include the current documentation and open separately', async ({ page }) => {
+  await page.goto('/docs/quick-start');
+  const control = page.locator('.docs-toc .chat-disclosure');
+  await control.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await expect(control.locator('.chat-providers a')).toHaveCount(6);
+  for (const link of await control.locator('.chat-providers a').all()) {
+    const url = new URL((await link.getAttribute('href'))!);
+    const prompt =
+      url.searchParams.get('prompt') || url.searchParams.get('q') || url.searchParams.get('text');
+    expect(prompt).toContain('Help me use IconForge');
+    expect(prompt).toContain('# Quick start');
+    await expect(link).toHaveAttribute('target', '_blank');
+    expect(
+      await link
+        .locator('img')
+        .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+    ).toBe(true);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobile = page.locator('.doc-actions-mobile .chat-disclosure');
+  await mobile.locator('summary').click();
+  await expect(mobile.getByRole('link', { name: 'Cursor', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

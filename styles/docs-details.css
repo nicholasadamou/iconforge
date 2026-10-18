@@ -84,14 +84,6 @@
 .doc-actions i {
   width: 19px;
 }
-.doc-actions summary {
-  padding: 10px 0;
-}
-.chat-providers {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 6px 10px;
-}
 .doc-actions-mobile,
 .docs-mobile-toc {
   display: none;

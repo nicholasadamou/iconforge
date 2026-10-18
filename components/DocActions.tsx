@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ChatProviders from './ChatProviders';
 
 export function CopyButton({ text, label = 'Copy' }: { text: string; label?: string }) {
   const [status, setStatus] = useState(label);
@@ -24,7 +25,6 @@ export function CopyButton({ text, label = 'Copy' }: { text: string; label?: str
 
 export default function DocActions({ content, slug }: { content: string; slug: string }) {
   const source = `https://github.com/nicholasadamou/iconforge/blob/main/docs/${slug || 'README'}.md`;
-  const prompt = encodeURIComponent(`Explain this IconForge documentation: ${source}`);
   return (
     <div className="doc-actions">
       <a href={source}>
@@ -36,14 +36,7 @@ export default function DocActions({ content, slug }: { content: string; slug: s
         Scroll to top
       </button>
       <CopyButton text={content} label="Copy as Markdown" />
-      <details>
-        <summary>Open in chat</summary>
-        <div className="chat-providers">
-          <a href={`https://chatgpt.com/?q=${prompt}`}>ChatGPT</a>
-          <a href={`https://claude.ai/new?q=${prompt}`}>Claude</a>
-          <a href={`https://v0.app/?q=${prompt}`}>v0</a>
-        </div>
-      </details>
+      <ChatProviders content={content} />
     </div>
   );
 }

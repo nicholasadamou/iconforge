@@ -8,7 +8,7 @@ The repository uses the exact license text in [LICENSE](https://github.com/nicho
 
 ## Icons and fonts
 
-[Font Awesome Free](https://fontawesome.com/license/free) supplies the icon collection and brand glyphs: icons use CC BY 4.0, fonts use SIL OFL 1.1, and code uses MIT. Upstream notices remain in the installed package. Brand marks belong to their respective owners; inclusion is not an endorsement.
+[Font Awesome Free](https://fontawesome.com/license/free) supplies the icon collection and brand glyphs: icons use CC BY 4.0, fonts use SIL OFL 1.1, and code uses MIT. Upstream notices remain in the installed package. The chat-provider SVG marks are adapted from the convrt reference assets. Brand marks belong to their respective owners; inclusion is not an endorsement.
 
 DM Sans is bundled through Fontsource under SIL OFL 1.1. The IconForge spark mark and social illustration were created for this project using SVG.
 
@@ -21,3 +21,5 @@ Navigation and footer styling adapt the [Smeltery Skills](https://github.com/sme
 Editing, search, live preview, and normal PNG/ICO exports run in your browser. There is no account system, application database, analytics script, or design upload for those features. Fonts are served with the application.
 
 Advanced export sends the current canvas image to RealFaviconGenerator when you choose that option. Its service terms and privacy policy apply there. GitHub links take you to GitHub. Your hosting provider may keep ordinary request logs; this application does not configure their retention policy.
+
+Opening a chat-provider link shares the current documentation text in that provider’s URL. It opens a new tab; IconForge does not send a chat message automatically.

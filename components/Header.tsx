@@ -34,6 +34,7 @@ export default function Header() {
   const results = docPages.filter((page) =>
     `${page.title} ${page.description}`.toLowerCase().includes(query.toLowerCase()),
   );
+  if (pathname === '/studio') return null;
   return (
     <>
       <a className="skip-link" href="#main">
@@ -45,7 +46,7 @@ export default function Header() {
           {isDocs && <span className="docs-header-label">Documentation</span>}
           <nav className="desktop-nav" aria-label="Main navigation">
             <Link
-              href={isDocs ? '/docs/exporting' : '/#studio'}
+              href={isDocs ? '/docs/exporting' : '/studio'}
               aria-current={!isDocs ? 'page' : undefined}
             >
               {isDocs ? 'Export reference' : 'Create an icon'}
@@ -113,7 +114,7 @@ export default function Header() {
               Search guides & documentation <kbd>⌘ K</kbd>
             </button>
             <nav className="mobile-primary" aria-label="Mobile navigation" onClick={close}>
-              <Link className="mobile-feature-card" href="/#studio">
+              <Link className="mobile-feature-card" href="/studio">
                 <span className="nav-card-icon">✳</span>
                 <span>
                   <strong>Create an icon</strong>

@@ -4,7 +4,7 @@ From your first icon to a browser tab in a few steps.
 
 ## Choose an icon
 
-Open the [studio](/#studio). Search for a word such as `leaf`, `coffee`, or `code`, then select an icon. Clear the search to browse the collection, and select **Show more icons** to load the next batch. Brand icons are also available; respect their owners’ trademark rules.
+Open the [studio](/studio). The editor fills your viewport; the icon library scrolls inside its panel. On phones, switch between **Choose an icon** and **Customize & export** to keep your workspace focused. Search for a word such as `leaf`, `coffee`, or `code`, then select an icon. Clear the search to browse the collection, and select **Show more icons** to load the next batch. Brand icons are also available; respect their owners’ trademark rules.
 
 ## Make it yours
 

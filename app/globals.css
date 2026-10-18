@@ -7,6 +7,8 @@
 @import '../styles/docs.css';
 @import '../styles/docs-details.css';
 @import '../styles/color-picker.css';
+@import '../styles/workspace.css';
+@import '../styles/marketing.css';
 
 :root {
   --paper: #fbf7f2;

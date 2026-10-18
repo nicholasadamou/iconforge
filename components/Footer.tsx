@@ -7,7 +7,7 @@ const groups = [
   {
     title: 'The studio',
     links: [
-      ['Create an icon', '/#studio'],
+      ['Create an icon', '/studio'],
       ['Colors & stacking', '/docs/customization'],
       ['Export formats', '/docs/exporting'],
     ],
@@ -33,7 +33,7 @@ const groups = [
 ];
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname.startsWith('/docs')) return null;
+  if (pathname.startsWith('/docs') || pathname === '/studio') return null;
   return (
     <footer className="site-footer">
       <div className="wrap">

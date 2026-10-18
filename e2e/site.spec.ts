@@ -39,11 +39,6 @@ test('mobile menu, search, keyboard dismissal, and reflow', async ({ page }) => 
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    if (width <= 780) {
-      const controls = await page.locator('.editor-controls').boundingBox();
-      const library = await page.locator('.icon-library').boundingBox();
-      expect(library!.y).toBeGreaterThanOrEqual(controls!.y + controls!.height);
-    }
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
@@ -108,4 +103,37 @@ test('docs drawer, section navigation, copy controls, and next page', async ({ p
   await expect(page.locator('.docs-mobile-toc nav')).toBeVisible();
   await page.locator('.docs-next').click();
   await expect(page).toHaveURL('/docs/exporting');
+});
+
+test('studio fills the viewport and mobile panels retain the design', async ({ page }) => {
+  await page.goto('/studio');
+  for (const [width, height] of [
+    [1440, 900],
+    [1024, 768],
+    [768, 600],
+    [390, 844],
+    [320, 568],
+  ]) {
+    await page.setViewportSize({ width, height });
+    expect(
+      await page.evaluate(
+        () =>
+          document.documentElement.scrollWidth <= innerWidth &&
+          document.documentElement.scrollHeight <= innerHeight,
+      ),
+    ).toBe(true);
+  }
+  await page.getByLabel('Find your shape').fill('leaf');
+  await page.getByRole('button', { name: 'leaf', exact: true }).click();
+  await page.getByRole('button', { name: '2. Customize & export' }).click();
+  await expect(page.locator('.preview-card')).toContainText('Leaf');
+  await page.getByLabel('Enable Stacked Icon').check();
+  await expect(page.getByLabel('Stacked Size:')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight)).toBe(
+    true,
+  );
+  await page.getByRole('button', { name: '1. Choose an icon' }).click();
+  await expect(page.getByLabel('Find your shape')).toHaveValue('leaf');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });

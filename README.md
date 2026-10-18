@@ -23,7 +23,7 @@ bun run hooks:install
 bun run dev
 ```
 
-Open `http://localhost:3000`. No API key is needed for normal exports.
+Open `http://localhost:3000` for the project homepage or `/studio` for the full-viewport editor. No API key is needed for normal exports.
 
 ## Documentation
 

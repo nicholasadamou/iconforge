@@ -6,7 +6,7 @@
       "name": "iconforge",
       "dependencies": {
         "@fontsource-variable/dm-sans": "^5.3.0",
-        "@fortawesome/fontawesome-free": "6.5.2",
+        "@fortawesome/fontawesome-free": "6.7.2",
         "file-saver": "^2.0.5",
         "fuse.js": "^7.5.0",
         "mermaid": "^12.2.0",
@@ -171,7 +171,7 @@
 
     "@fontsource-variable/dm-sans": ["@fontsource-variable/dm-sans@5.3.0", "", {}, "sha512-BpUG5bqePiDFMBM4ZtLSlPdAIOM990uB1dlXzIf4aw21yQR7BmykedLXXXMqGWsR18aMLOsbWccwJNh3ztTQaA=="],
 
-    "@fortawesome/fontawesome-free": ["@fortawesome/fontawesome-free@6.5.2", "", {}, "sha512-hRILoInAx8GNT5IMkrtIt9blOdrqHOnPBH+k70aWUAqPZPgopb9G5EQJFpaBx/S8zp2fC+mPW349Bziuk1o28Q=="],
+    "@fortawesome/fontawesome-free": ["@fortawesome/fontawesome-free@6.7.2", "", {}, "sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.1", "", {}, "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="],
 

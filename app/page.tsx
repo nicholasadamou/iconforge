@@ -24,7 +24,7 @@ export default function Home() {
               Create your favicon{' '}
               <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true" />
             </Link>
-            <Link className="text-link" href="/docs/quick-start">
+            <Link className="text-link" href="#getting-started">
               How it works
             </Link>
           </div>
@@ -61,7 +61,7 @@ export default function Home() {
           <p>Something small. Unmistakably you.</p>
         </div>
       </section>
-      <section className="wrap how-section">
+      <section className="wrap how-section" id="getting-started">
         <div>
           <p className="eyebrow">FROM IDEA TO BROWSER TAB</p>
           <h2>

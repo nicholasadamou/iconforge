@@ -15,7 +15,7 @@ const groups = [
   {
     title: 'Resources',
     links: [
-      ['Getting started', '/docs/quick-start'],
+      ['Getting started', '/#getting-started'],
       ['Documentation', '/docs'],
       ['How it works', '/docs/architecture'],
       ['Local development', '/docs/development'],

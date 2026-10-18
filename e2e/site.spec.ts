@@ -34,6 +34,18 @@ test('search, customize, and download a real ICO and PNG', async ({ page }) => {
 test('mobile menu, search, keyboard dismissal, and reflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    if (width <= 780) {
+      const controls = await page.locator('.editor-controls').boundingBox();
+      const library = await page.locator('.icon-library').boundingBox();
+      expect(library!.y).toBeGreaterThanOrEqual(controls!.y + controls!.height);
+    }
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Navigation' })).toBeVisible();
   await page.keyboard.press('Escape');

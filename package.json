@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Create beautiful favicons using Font Awesome icons",
   "author": "Nicholas Adamou",
-  "license": "MIT",
+  "license": "LicenseRef-PolyForm-Shield-1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/nicholasadamou/iconforge"
@@ -28,31 +28,55 @@
     "test:coverage": "jest --coverage",
     "deploy": "./scripts/deploy.sh",
     "deploy:preview": "vercel",
-    "deploy:prod": "vercel --prod"
+    "deploy:prod": "vercel --prod",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "lint:docs": "markdownlint-cli2",
+    "lint:diagrams": "node scripts/check-diagrams.mjs",
+    "lint:budget": "node scripts/check-budgets.mjs",
+    "check": "bun run format:check && bun run lint && bun run typecheck && bun run lint:docs && bun run lint:diagrams && bun run lint:budget",
+    "test:ci": "jest --ci --runInBand --coverage",
+    "test:e2e": "playwright test",
+    "verify:production": "bun run build && bun run test:e2e",
+    "hooks:install": "pre-commit install --hook-type pre-commit --hook-type pre-push"
   },
   "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fortawesome/fontawesome-free": "6.5.2",
     "file-saver": "^2.0.5",
-    "fuse.js": "^7.1.0",
-    "next": "16.0.3",
-    "react": "19.2.0",
-    "react-colorful": "^5.6.1",
-    "react-dom": "19.2.0"
+    "fuse.js": "^7.5.0",
+    "mermaid": "^12.2.0",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-colorful": "^5.8.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/jest-dom": "^6.10.0",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
     "@types/file-saver": "^2.0.7",
     "@types/jest": "^30.0.0",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.3",
-    "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@types/node": "24",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.2",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "markdownlint-cli2": "^0.23.3",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "bun@1.3.13",
+  "engines": {
+    "node": ">=24"
   }
 }

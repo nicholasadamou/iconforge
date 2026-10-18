@@ -65,10 +65,10 @@ describe('canvas-utils', () => {
       const canvas = document.createElement('canvas');
       canvas.width = 512;
       canvas.height = 512;
-      
+
       // Mock toDataURL since jsdom doesn't implement it
       canvas.toDataURL = jest.fn(() => 'data:image/png;base64,mockdata');
-      
+
       const result = canvasToDataURL(canvas);
       expect(result).toMatch(/^data:image\/png;base64,/);
     });

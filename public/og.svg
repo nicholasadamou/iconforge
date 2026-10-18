@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<title>IconForge — Small icon. Big character.</title>
+<rect width="1200" height="630" fill="#f6f6f3"/>
+<g font-family="Arial, sans-serif" fill="#292b25">
+<rect x="64" y="54" width="38" height="38" rx="11" fill="#526447"/>
+<path d="m85 60-3 11 11-3-9 9 3 11-9-9-9 3 7-10-1-9 7 5Z" fill="#edf1dc"/>
+<text x="115" y="82" font-size="28" font-weight="700">iconforge.</text>
+<text x="65" y="178" font-size="13" letter-spacing="3" fill="#526447">YOUR NEXT FAVICON STARTS HERE</text>
+<text x="60" y="270" font-size="76" font-weight="700" letter-spacing="-4">Small icon.</text>
+<text x="60" y="355" font-size="79" font-family="Georgia, serif" font-style="italic" letter-spacing="-3" fill="#526447">Big character.</text>
+<text x="65" y="417" font-size="21" fill="#696d63">Pick a shape. Find your color.</text>
+<text x="65" y="449" font-size="21" fill="#696d63">Make a little mark of your own.</text>
+<rect x="65" y="493" width="170" height="43" rx="22" fill="#292b25"/>
+<text x="90" y="520" font-size="14" fill="white">Create your favicon</text>
+<g transform="translate(650 118) rotate(3 220 190)">
+<rect x="8" y="12" width="465" height="370" rx="21" fill="#dce0d4"/>
+<rect width="465" height="370" rx="21" fill="white" stroke="#d9ded0"/>
+<path d="M0 48H465" stroke="#e1e3d9"/>
+<g fill="#b6beaa"><circle cx="22" cy="25" r="5"/><circle cx="40" cy="25" r="5"/><circle cx="58" cy="25" r="5"/></g>
+<text x="175" y="30" font-size="13" fill="#696d63">Your next big idea</text>
+<rect x="30" y="78" width="405" height="236" rx="12" fill="#eceee5"/>
+<rect x="65" y="116" width="116" height="116" rx="27" fill="#526447"/>
+<path d="m132 128-9 35 35-9-29 29 9 35-29-29-29 9 22-32-3-28 22 16Z" fill="#edf1dc"/>
+<rect x="230" y="104" width="166" height="155" rx="12" fill="#fff" stroke="#d5ddc9"/>
+<text x="250" y="135" font-size="12" fill="#696d63">EXPORT YOUR ICON</text>
+<path d="M246 150H380" stroke="#e1e3d9"/>
+<rect x="243" y="162" width="139" height="34" rx="6" fill="#e6eedc"/>
+<text x="254" y="184" font-size="14" fill="#526447">favicon.ico</text>
+<text x="254" y="224" font-size="14" fill="#696d63">favicon.png</text>
+<text x="30" y="343" font-size="12" fill="#696d63">1,895 icons. A world of possibilities.</text>
+</g>
+<path d="M65 575H1135" stroke="#d9ded0"/>
+<text x="65" y="604" font-size="12" fill="#696d63">FONT AWESOME · LIVE PREVIEW · BROWSER EXPORTS</text>
+<text x="930" y="604" font-size="12" fill="#526447">nicholasadamou/iconforge</text>
+</g></svg>

@@ -1,0 +1,9 @@
+{
+  "defaultLines": 300,
+  "defaultFiles": 25,
+  "excluded": {
+    "lib/icons.ts": "Generated Font Awesome catalog; regenerate rather than hand-edit.",
+    "bun.lock": "Dependency lockfile.",
+    ".flox/env/manifest.lock": "Resolved cross-platform Flox packages."
+  }
+}

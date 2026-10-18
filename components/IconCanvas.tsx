@@ -12,9 +12,13 @@ export default function IconCanvas({ state }: IconCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      drawIcon(canvasRef.current, state);
-    }
+    let active = true;
+    document.fonts.ready.then(() => {
+      if (active && canvasRef.current) drawIcon(canvasRef.current, state);
+    });
+    return () => {
+      active = false;
+    };
   }, [state]);
 
   return (

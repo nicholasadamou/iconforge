@@ -12,7 +12,7 @@ export const useDynamicFavicon = (canvasSelector: string = 'canvas') => {
 
         // Find or create the favicon link element
         let link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-        
+
         if (!link) {
           link = document.createElement('link');
           link.rel = 'icon';
@@ -32,17 +32,19 @@ export const useDynamicFavicon = (canvasSelector: string = 'canvas') => {
     return () => clearTimeout(timeoutId);
   }, [canvasSelector]);
 
-  return { updateFavicon: () => {
-    const canvas = document.querySelector(canvasSelector) as HTMLCanvasElement;
-    if (canvas) {
-      const faviconUrl = canvas.toDataURL('image/png');
-      let link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
+  return {
+    updateFavicon: () => {
+      const canvas = document.querySelector(canvasSelector) as HTMLCanvasElement;
+      if (canvas) {
+        const faviconUrl = canvas.toDataURL('image/png');
+        let link = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        link.href = faviconUrl;
       }
-      link.href = faviconUrl;
-    }
-  }};
+    },
+  };
 };

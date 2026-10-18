@@ -12,7 +12,7 @@ export function useIconSearch(icons: Icon[]) {
         threshold: 0.3,
         distance: 100,
       }),
-    [icons]
+    [icons],
   );
 
   const filteredIcons = useMemo(() => {

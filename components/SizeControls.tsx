@@ -11,17 +11,16 @@ export default function SizeControls({ state, onChange }: SizeControlsProps) {
   return (
     <div className="bg-gray-800 rounded-lg shadow-md p-6 space-y-4">
       <div>
-        <label className="text-sm font-medium text-gray-200 mb-2 block">
+        <label htmlFor="icon-size" className="text-sm font-medium text-gray-200 mb-2 block">
           Icon Size: {state.size}%
         </label>
         <input
+          id="icon-size"
           type="range"
           min="10"
           max="100"
           value={state.size}
-          onChange={(e) =>
-            onChange({ size: Number(e.target.value) })
-          }
+          onChange={(e) => onChange({ size: Number(e.target.value) })}
           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
         />
       </div>
@@ -32,9 +31,7 @@ export default function SizeControls({ state, onChange }: SizeControlsProps) {
           type="checkbox"
           id="stacked"
           checked={state.stackedSelected}
-          onChange={(e) =>
-            onChange({ stackedSelected: e.target.checked })
-          }
+          onChange={(e) => onChange({ stackedSelected: e.target.checked })}
           className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
         />
         <label htmlFor="stacked" className="text-sm font-medium text-gray-200">
@@ -44,17 +41,16 @@ export default function SizeControls({ state, onChange }: SizeControlsProps) {
 
       {state.stackedSelected && (
         <div>
-          <label className="text-sm font-medium text-gray-200 mb-2 block">
+          <label htmlFor="stacked-size" className="text-sm font-medium text-gray-200 mb-2 block">
             Stacked Size: {state.stackedSize}%
           </label>
           <input
+            id="stacked-size"
             type="range"
             min="10"
             max="100"
             value={state.stackedSize}
-            onChange={(e) =>
-              onChange({ stackedSize: Number(e.target.value) })
-            }
+            onChange={(e) => onChange({ stackedSize: Number(e.target.value) })}
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
         </div>

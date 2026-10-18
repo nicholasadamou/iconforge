@@ -1,20 +1,28 @@
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
+import { canvasToIco } from '@/lib/ico';
 import { canvasToBlob } from '@/lib/canvas-utils';
 import { DownloadFormat } from '@/components/DownloadControls';
 
 export function useDownload() {
+  const [error, setError] = useState('');
   const [downloading, setDownloading] = useState(false);
   const [downloadFormat, setDownloadFormat] = useState<DownloadFormat>('ico');
 
   const handleDownload = async (canvasSelector: string = 'canvas') => {
     const canvas = document.querySelector(canvasSelector) as HTMLCanvasElement;
-    if (!canvas) return;
+    setError('');
+    if (!canvas) {
+      setError('Preview is not ready. Try again after it loads.');
+      return;
+    }
 
     setDownloading(true);
     try {
       if (downloadFormat === 'ico-advanced') {
-        // Open RealFaviconGenerator with the canvas data
+        if (!process.env.NEXT_PUBLIC_REAL_FAVICON_GENERATOR_API_KEY) {
+          throw new Error('Advanced export is not configured. Choose PNG or ICO instead.');
+        }
         const base64Image = canvas.toDataURL().split(',')[1];
         const formData = JSON.stringify({
           favicon_generation: {
@@ -44,14 +52,15 @@ export function useDownload() {
         form.submit();
         document.body.removeChild(form);
       } else {
-        // For ICO and PNG, download as PNG (browsers will handle ICO conversion)
-        const blob = await canvasToBlob(canvas);
+        const blob =
+          downloadFormat === 'ico' ? await canvasToIco(canvas) : await canvasToBlob(canvas);
         const extension = downloadFormat === 'ico' ? 'ico' : 'png';
         const filename = `favicon.${extension}`;
         saveAs(blob, filename);
       }
     } catch (error) {
       console.error('Download failed:', error);
+      setError(error instanceof Error ? error.message : 'Download failed. Please try again.');
     } finally {
       setDownloading(false);
     }
@@ -66,6 +75,7 @@ export function useDownload() {
   };
 
   return {
+    error,
     downloading,
     downloadFormat,
     handleDownload,

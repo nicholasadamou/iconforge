@@ -1,11 +1,11 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import IconCanvas from '@/components/IconCanvas';
 import ColorPicker from '@/components/ColorPicker';
 import IconGrid from '@/components/IconGrid';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import SizeControls from '@/components/SizeControls';
 import DownloadControls from '@/components/DownloadControls';
 import { icons, defaultIcon } from '@/lib/icons';
@@ -16,7 +16,7 @@ import { useDownload } from '@/hooks/useDownload';
 
 export default function Home() {
   const [state, setState] = useState<CanvasState>({
-    foregroundColor: '#ff3860',
+    foregroundColor: '#526447',
     backgroundColor: 'transparent',
     size: 85,
     stackedSize: 60,
@@ -27,7 +27,7 @@ export default function Home() {
 
   // Custom hooks
   const { searchQuery, setSearchQuery, filteredIcons } = useIconSearch(icons);
-  const { downloading, downloadFormat, handleDownload, cycleDownloadFormat } = useDownload();
+  const { error, downloading, downloadFormat, handleDownload, cycleDownloadFormat } = useDownload();
   const { updateFavicon } = useDynamicFavicon();
 
   // Update favicon whenever state changes
@@ -41,95 +41,203 @@ export default function Home() {
   }, [state, updateFavicon]);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Left Panel - Controls */}
-      <div className="w-full lg:w-1/2 bg-gray-900 flex flex-col lg:h-screen overflow-y-auto">
-        <div className="flex-1 flex flex-col items-center justify-start p-8">
-          <div className="w-full max-w-md space-y-6">
-            <Header />
-
-            {/* Canvas Preview */}
-            <div className="bg-gray-800 rounded-lg shadow-md p-6">
-              <IconCanvas state={state} />
+    <main id="main">
+      <section className="wrap hero">
+        <div>
+          <p className="eyebrow">
+            <span className="status-dot" /> THE ICONFORGE STUDIO
+          </p>
+          <h1>
+            Small icon.
+            <br />
+            <em>Big character.</em>
+          </h1>
+          <p className="hero-copy">
+            Give your next idea a mark of its own. Pick an icon, make it yours, and bring a little
+            character to every tab.
+          </p>
+          <div className="hero-actions">
+            <Link className="primary-link" href="#studio">
+              Create your favicon <span>↗</span>
+            </Link>
+            <Link className="text-link" href="/docs/quick-start">
+              How it works
+            </Link>
+          </div>
+          <p className="hero-meta">
+            1,895 icons <span>·</span> Live preview <span>·</span> Made in your browser
+          </p>
+        </div>
+        <div className="hero-art" aria-label="A collection of favicon ideas">
+          <div className="art-label">A LITTLE DETAIL. ALL YOURS.</div>
+          <div className="sample-icons">
+            {[
+              'seedling',
+              'bolt',
+              'moon',
+              'asterisk',
+              'mountain-sun',
+              'paper-plane',
+              'code',
+              'heart',
+              'sun',
+            ].map((name, index) => (
+              <div key={name} className={`sample-icon sample-${index}`}>
+                <i aria-hidden="true" className={`fa-solid fa-${name}`} />
+              </div>
+            ))}
+          </div>
+          <div className="browser-sample">
+            <span>● ● ●</span>
+            <span>
+              <Image src="/logo.svg" width="14" height="14" alt="" /> Your next big idea
+            </span>
+            <span>+</span>
+          </div>
+          <p>Something small. Unmistakably you.</p>
+        </div>
+      </section>
+      <section className="studio-section" id="studio">
+        <div className="wrap">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">YOUR NEXT FAVICON STARTS HERE</p>
+              <h2>Make your mark.</h2>
             </div>
-
-            {/* Color Controls */}
-            <div className="bg-gray-800 rounded-lg shadow-md p-6 space-y-4">
-              <ColorPicker
-                color={state.foregroundColor}
-                onChange={(color) =>
-                  setState((prev) => ({ ...prev, foregroundColor: color }))
-                }
-                label="Icon Color"
-              />
-              <div>
+            <p>Pick a shape. Find your color. Make it yours.</p>
+          </div>
+          <div className="editor-layout">
+            <div className="editor-controls">
+              <div className="preview-card">
+                <div className="panel-label">
+                  <span>LIVE PREVIEW</span>
+                  <span>512 × 512</span>
+                </div>
+                <IconCanvas state={state} />
+                <p>{state.icon?.label}</p>
+              </div>
+              <div className="control-card">
+                <ColorPicker
+                  color={state.foregroundColor}
+                  onChange={(color) => setState((prev) => ({ ...prev, foregroundColor: color }))}
+                  label="Icon Color"
+                />
                 <ColorPicker
                   color={state.backgroundColor}
-                  onChange={(color) =>
-                    setState((prev) => ({ ...prev, backgroundColor: color }))
-                  }
+                  onChange={(color) => setState((prev) => ({ ...prev, backgroundColor: color }))}
                   label="Background Color"
                 />
-                <div className="flex items-center gap-2 mt-2">
+                <label className="check-label">
                   <input
                     type="checkbox"
-                    id="transparent"
                     checked={state.backgroundColor === 'transparent'}
-                    onChange={(e) =>
+                    onChange={(event) =>
                       setState((prev) => ({
                         ...prev,
-                        backgroundColor: e.target.checked ? 'transparent' : '#ffffff',
+                        backgroundColor: event.target.checked ? 'transparent' : '#ffffff',
                       }))
                     }
-                    className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
-                  />
-                  <label htmlFor="transparent" className="text-sm text-gray-300">
-                    Transparent background
-                  </label>
-                </div>
+                  />{' '}
+                  Transparent background
+                </label>
+              </div>
+              <SizeControls
+                state={state}
+                onChange={(updates) => setState((prev) => ({ ...prev, ...updates }))}
+              />
+              <DownloadControls
+                downloading={downloading}
+                format={downloadFormat}
+                onDownload={() => handleDownload()}
+                onFormatChange={cycleDownloadFormat}
+              />
+              {error && <p role="alert">{error}</p>}
+              <p className="download-note">
+                Made locally in your browser. <Link href="/docs/exporting">About exports</Link>
+              </p>
+            </div>
+            <div className="icon-library">
+              <div className="library-heading">
+                <label htmlFor="icon-search">Find your shape</label>
+                <span>{filteredIcons.length.toLocaleString()} icons</span>
+              </div>
+              <div className="icon-search">
+                <i className="fa-solid fa-magnifying-glass" aria-hidden="true" />
+                <input
+                  id="icon-search"
+                  placeholder="Search icons… try coffee, code, or leaf"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} aria-label="Clear icon search">
+                    ×
+                  </button>
+                )}
+              </div>
+              <div className="icon-scroll">
+                <IconGrid
+                  key={searchQuery}
+                  icons={filteredIcons}
+                  onSelectIcon={(icon) =>
+                    setState((prev) => ({
+                      ...prev,
+                      [prev.stackedSelected ? 'stackedIcon' : 'icon']: icon,
+                    }))
+                  }
+                />
+                {!filteredIcons.length && (
+                  <div className="empty-state">
+                    <h3>No icons found.</h3>
+                    <p>Try a broader word, or start fresh.</p>
+                    <button onClick={() => setSearchQuery('')}>Clear search</button>
+                  </div>
+                )}
+              </div>
+              <div className="library-foot">
+                Font Awesome Free <span>Solid · Regular · Brands</span>
               </div>
             </div>
-
-            <SizeControls
-              state={state}
-              onChange={(updates) => setState((prev) => ({ ...prev, ...updates }))}
-            />
-
-            <DownloadControls
-              downloading={downloading}
-              format={downloadFormat}
-              onDownload={() => handleDownload()}
-              onFormatChange={cycleDownloadFormat}
-            />
           </div>
         </div>
-
-        <Footer />
-      </div>
-
-      {/* Right Panel - Icon Grid */}
-      <div className="w-full lg:w-1/2 h-screen bg-gray-800 overflow-y-auto border-t lg:border-t-0 lg:border-l border-gray-700">
-        <div className="sticky top-0 bg-gray-900 p-4 z-10 shadow-md border-b border-gray-700">
-          <input
-            type="text"
-            placeholder="Search icons..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg border-2 border-gray-600 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600"
-          />
+      </section>
+      <section className="wrap how-section">
+        <div>
+          <p className="eyebrow">FROM IDEA TO BROWSER TAB</p>
+          <h2>
+            Three steps.
+            <br />
+            <em>One little masterpiece.</em>
+          </h2>
+          <Link className="text-link" href="/docs/quick-start">
+            Read the quick start
+          </Link>
         </div>
-        <div className="bg-gray-800">
-          <IconGrid
-            icons={filteredIcons}
-            onSelectIcon={(icon) =>
-              setState((prev) => ({
-                ...prev,
-                [prev.stackedSelected ? 'stackedIcon' : 'icon']: icon,
-              }))
-            }
-          />
-        </div>
-      </div>
-    </div>
+        <ol>
+          {[
+            [
+              'Find your shape',
+              'Search 1,895 Font Awesome icons, from simple symbols to familiar brands.',
+            ],
+            [
+              'Add your character',
+              'Choose colors, adjust the size, or stack a second icon for something different.',
+            ],
+            [
+              'Give it a home',
+              'Download your favicon and add it to your website. A small finishing touch, sorted.',
+            ],
+          ].map(([title, text], index) => (
+            <li key={title}>
+              <span>0{index + 1}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </main>
   );
 }

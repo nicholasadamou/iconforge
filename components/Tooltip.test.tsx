@@ -7,7 +7,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip content">
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     expect(screen.getByText('Hover me')).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip content">
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     expect(screen.queryByText('Tooltip content')).not.toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip content">
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     await user.hover(screen.getByText('Hover me'));
@@ -40,7 +40,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content="Tooltip content">
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     const button = screen.getByText('Hover me');
@@ -50,7 +50,6 @@ describe('Tooltip', () => {
     await user.unhover(button);
     expect(screen.queryByText('Tooltip content')).not.toBeInTheDocument();
   });
-
 
   it('should render complex content', async () => {
     const user = userEvent.setup();
@@ -64,7 +63,7 @@ describe('Tooltip', () => {
     render(
       <Tooltip content={content}>
         <button>Hover me</button>
-      </Tooltip>
+      </Tooltip>,
     );
 
     await user.hover(screen.getByText('Hover me'));

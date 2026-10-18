@@ -1,0 +1,247 @@
+.docs-header {
+  height: 76px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--line);
+  background: #f6f6f3f5;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.docs-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+}
+.docs-header-label {
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.docs-header .brand-sub {
+  display: none;
+}
+.docs-header .github-link {
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+}
+.docs-layout {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 245px minmax(0, 1fr) 220px;
+  max-width: 1600px;
+}
+.docs-sidebar {
+  padding: 36px 22px;
+  border-right: 1px solid var(--line);
+  position: sticky;
+  top: 76px;
+  height: calc(100dvh - 76px);
+  overflow: auto;
+}
+.docs-sidebar nav a,
+.docs-mobile-nav nav a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  border-radius: 6px;
+  color: #57604f;
+}
+.docs-sidebar a:hover,
+.docs-mobile-nav nav a:hover {
+  background: #e9eee1;
+}
+.docs-sidebar a[aria-current],
+.docs-mobile-nav a[aria-current] {
+  background: #e3ecd7;
+  color: #3e5c31;
+  font-weight: 600;
+}
+.docs-sidebar nav p,
+.docs-mobile-nav nav p {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #626a5b;
+  padding: 24px 10px 8px;
+}
+.docs-home {
+  display: block;
+  padding: 0 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.docs-main {
+  min-width: 0;
+  padding: 56px clamp(24px, 4vw, 64px) 60px;
+}
+.docs-breadcrumb {
+  margin-bottom: 42px;
+}
+.docs-main h1 {
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+  font-weight: 550;
+  margin-bottom: 24px;
+}
+.docs-main h1 + p {
+  font-size: 17px;
+  margin-bottom: 42px;
+}
+.docs-main h2 {
+  font-size: 27px;
+  letter-spacing: -0.035em;
+  margin: 40px 0 20px;
+  scroll-margin-top: 110px;
+}
+.docs-main p,
+.docs-main li {
+  font-size: 14px;
+  color: #626a5b;
+  line-height: 1.8;
+}
+.docs-main p + p {
+  margin-top: 18px;
+}
+.docs-main p a,
+.docs-main li a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #405636;
+}
+.docs-main p code,
+.docs-main td code {
+  font-size: 12px;
+  background: #e9ede2;
+  border-radius: 4px;
+  padding: 2px 4px;
+  overflow-wrap: anywhere;
+}
+.docs-main ul,
+.docs-main ol {
+  padding-left: 24px;
+  list-style: revert;
+}
+.code-block {
+  border: 1px solid var(--line);
+  background: #edf0e7;
+  border-radius: 10px;
+  margin: 24px 0;
+  overflow: auto;
+}
+.code-block > code {
+  display: block;
+  padding: 20px;
+  font: 12px/1.8 var(--mono);
+  white-space: pre;
+}
+.docs-main table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 24px 0;
+}
+.docs-main th,
+.docs-main td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid var(--line);
+}
+.docs-toc {
+  position: sticky;
+  top: 76px;
+  height: fit-content;
+  padding: 56px 24px;
+  font-size: 11px;
+}
+.docs-toc p {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.docs-toc a {
+  display: block;
+  color: var(--muted);
+  padding: 6px 0;
+}
+.docs-next {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 12px;
+}
+.docs-mobile-nav {
+  display: none;
+}
+.diagram {
+  background: white;
+}
+.diagram figcaption,
+.diagram details {
+  padding: 12px 16px;
+  font-size: 11px;
+  border-bottom: 1px solid var(--line);
+}
+.diagram > div {
+  padding: 20px;
+  overflow: auto;
+}
+.diagram svg {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+.diagram pre {
+  font: 11px/1.8 var(--mono);
+  overflow: auto;
+  padding: 12px 0;
+}
+@media (max-width: 1200px) {
+  .docs-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+  .docs-toc {
+    display: none;
+  }
+  .docs-header-label {
+    display: none;
+  }
+}
+@media (max-width: 780px) {
+  .docs-header {
+    padding-inline: 16px;
+    height: 66px;
+  }
+  .docs-header-inner {
+    gap: 12px;
+  }
+  .docs-layout {
+    display: block;
+  }
+  .docs-sidebar {
+    display: none;
+  }
+  .docs-main {
+    padding: 24px 20px 48px;
+  }
+  .docs-mobile-nav {
+    display: block;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+  .docs-main h1 {
+    font-size: 42px;
+  }
+  .docs-breadcrumb {
+    margin-bottom: 28px;
+  }
+}

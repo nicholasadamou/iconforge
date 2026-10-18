@@ -1,0 +1,33 @@
+name: ci
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**', 'ci/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: flox/install-flox-action@5bb9eaaffbeaa699a8251a1ae21ecf4c8e0e37d4
+        with:
+          disable-metrics: true
+      - name: Install locked dependencies and browser
+        run: |
+          flox activate -- bun install --frozen-lockfile
+          flox activate -- bunx playwright install --with-deps chromium
+      - name: Static checks
+        run: flox activate -- bun run check
+      - name: Unit tests
+        run: flox activate -- bun run test:ci
+      - name: Production build and browser tests
+        run: flox activate -- bun run verify:production

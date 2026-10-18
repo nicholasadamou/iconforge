@@ -17,7 +17,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     expect(screen.getByText('Download')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     expect(screen.getByText('.ico')).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('DownloadControls', () => {
         format="ico-advanced"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     expect(screen.getByText('.ico (advanced)')).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe('DownloadControls', () => {
         format="png"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     expect(screen.getByText('.png')).toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     await user.click(screen.getByText('Download'));
@@ -85,7 +85,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     await user.click(screen.getByText('.ico'));
@@ -99,12 +99,12 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     const downloadButton = screen.getByText('Downloading...').closest('button');
     expect(downloadButton).toBeDisabled();
-    
+
     const formatButton = screen.getByText('.ico').closest('button');
     expect(formatButton).toBeDisabled();
   });
@@ -116,7 +116,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     expect(screen.getByText('Downloading...')).toBeInTheDocument();
@@ -129,7 +129,7 @@ describe('DownloadControls', () => {
         format="ico"
         onDownload={mockOnDownload}
         onFormatChange={mockOnFormatChange}
-      />
+      />,
     );
 
     // The tooltip button contains an SVG icon

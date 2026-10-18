@@ -1,3 +1,5 @@
+'use client';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Brand, { repository } from './Brand';
 
@@ -30,6 +32,8 @@ const groups = [
   },
 ];
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith('/docs')) return null;
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -57,7 +61,7 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} IconForge</span>
           <a href={`${repository}/blob/main/LICENSE`}>PolyForm Shield license</a>
           <span className="footer-note">Made for the smallest details.</span>
-          <a href="#top">Back to top ↑</a>
+          <a href="#top">Back to top</a>
         </div>
       </div>
     </footer>

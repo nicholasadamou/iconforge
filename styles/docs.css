@@ -2,7 +2,7 @@
   height: 76px;
   padding: 0 32px;
   border-bottom: 1px solid var(--line);
-  background: #f6f6f3f5;
+  background: #fbf7f2f5;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -30,7 +30,7 @@
 .docs-layout {
   margin: auto;
   display: grid;
-  grid-template-columns: 245px minmax(0, 1fr) 220px;
+  grid-template-columns: 245px minmax(0, 1fr) 240px;
   max-width: 1600px;
 }
 .docs-sidebar {
@@ -42,30 +42,30 @@
   overflow: auto;
 }
 .docs-sidebar nav a,
-.docs-mobile-nav nav a {
+.docs-navigation a {
   display: block;
   padding: 10px;
   margin-bottom: 5px;
   font-size: 12px;
   border-radius: 6px;
-  color: #57604f;
+  color: #75665e;
 }
 .docs-sidebar a:hover,
-.docs-mobile-nav nav a:hover {
-  background: #e9eee1;
+.docs-navigation a:hover {
+  background: #f5e8de;
 }
 .docs-sidebar a[aria-current],
-.docs-mobile-nav a[aria-current] {
-  background: #e3ecd7;
-  color: #3e5c31;
+.docs-navigation a[aria-current] {
+  background: #f5ded0;
+  color: #88351f;
   font-weight: 600;
 }
 .docs-sidebar nav p,
-.docs-mobile-nav nav p {
+.docs-navigation p {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #626a5b;
+  color: #75665e;
   padding: 24px 10px 8px;
 }
 .docs-home {
@@ -82,7 +82,7 @@
   margin-bottom: 42px;
 }
 .docs-main h1 {
-  font-size: clamp(40px, 5vw, 62px);
+  font-size: clamp(34px, 4vw, 48px);
   line-height: 1.08;
   letter-spacing: -0.05em;
   font-weight: 550;
@@ -101,7 +101,7 @@
 .docs-main p,
 .docs-main li {
   font-size: 14px;
-  color: #626a5b;
+  color: #75665e;
   line-height: 1.8;
 }
 .docs-main p + p {
@@ -111,12 +111,12 @@
 .docs-main li a {
   text-decoration: underline;
   text-underline-offset: 3px;
-  color: #405636;
+  color: #88351f;
 }
 .docs-main p code,
 .docs-main td code {
   font-size: 12px;
-  background: #e9ede2;
+  background: #f3e8df;
   border-radius: 4px;
   padding: 2px 4px;
   overflow-wrap: anywhere;
@@ -128,7 +128,7 @@
 }
 .code-block {
   border: 1px solid var(--line);
-  background: #edf0e7;
+  background: #f5ede6;
   border-radius: 10px;
   margin: 24px 0;
   overflow: auto;
@@ -156,7 +156,7 @@
   position: sticky;
   top: 76px;
   height: fit-content;
-  padding: 56px 24px;
+  padding: 50px 24px 32px 8px;
   font-size: 11px;
 }
 .docs-toc p {
@@ -203,7 +203,7 @@
   overflow: auto;
   padding: 12px 0;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .docs-layout {
     grid-template-columns: 220px minmax(0, 1fr);
   }
@@ -214,7 +214,7 @@
     display: none;
   }
 }
-@media (max-width: 780px) {
+@media (max-width: 700px) {
   .docs-header {
     padding-inline: 16px;
     height: 66px;
@@ -229,7 +229,7 @@
     display: none;
   }
   .docs-main {
-    padding: 24px 20px 48px;
+    padding: 36px 20px 0;
   }
   .docs-mobile-nav {
     display: block;
@@ -239,7 +239,7 @@
     font-size: 13px;
   }
   .docs-main h1 {
-    font-size: 42px;
+    font-size: 34px;
   }
   .docs-breadcrumb {
     margin-bottom: 28px;

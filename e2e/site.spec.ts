@@ -83,3 +83,29 @@ test('home accessibility, assets, and unknown-page recovery', async ({ page }) =
   }
   expect((await page.goto('/docs/not-a-guide'))?.status()).toBe(404);
 });
+
+test('docs drawer, section navigation, copy controls, and next page', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/docs/quick-start');
+  await page
+    .locator('.code-heading')
+    .first()
+    .getByRole('button', { name: 'Copy', exact: true })
+    .click();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('favicon.ico');
+  await page.locator('.docs-toc').getByRole('button', { name: 'Copy as Markdown' }).click();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('# Quick start');
+  await expect(page.locator('.site-footer')).toHaveCount(0);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'Menu', exact: true }).click();
+  await page
+    .getByRole('dialog', { name: 'Navigation' })
+    .getByRole('link', { name: 'Colors & stacking' })
+    .click();
+  await expect(page).toHaveURL('/docs/customization');
+  await expect(page.getByRole('dialog', { name: 'Navigation' })).not.toBeVisible();
+  await page.locator('.docs-mobile-toc summary').click();
+  await expect(page.locator('.docs-mobile-toc nav')).toBeVisible();
+  await page.locator('.docs-next').click();
+  await expect(page).toHaveURL('/docs/exporting');
+});

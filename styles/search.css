@@ -50,7 +50,7 @@ dialog[open] {
 kbd {
   font: 10px var(--sans);
   padding: 2px 5px;
-  border: 1px solid #d5dacb;
+  border: 1px solid #e5d2c4;
   border-radius: 4px;
   background: #ffffff80;
   color: var(--muted);
@@ -67,7 +67,7 @@ kbd {
   border: 1px solid var(--line);
 }
 .close-overlay:hover {
-  background: #e5e9db;
+  background: #f0e0d3;
 }
 .overlay-heading {
   display: flex;
@@ -96,7 +96,7 @@ kbd {
   align-items: center;
   gap: 13px;
   margin: 0 26px;
-  border: 1px solid #b9c3ac;
+  border: 1px solid #c9ab98;
   background: white;
   border-radius: 12px;
   padding: 0 15px;
@@ -138,7 +138,7 @@ kbd {
   font-size: 12px;
 }
 .search-scopes button:hover {
-  background: #e9eddf;
+  background: #f4e5d8;
 }
 .search-scopes button[aria-pressed='true'] {
   background: var(--ink);
@@ -167,7 +167,7 @@ kbd {
 }
 .search-result:hover,
 .search-result:focus-visible {
-  background: #e9eddf;
+  background: #f4e5d8;
   color: var(--ink);
 }
 .search-result:focus-visible {

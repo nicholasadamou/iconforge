@@ -1,0 +1,240 @@
+.docs-header .brand {
+  font-size: 23px;
+}
+.docs-header .brand img {
+  width: 25px;
+  height: 25px;
+}
+.docs-header .desktop-nav {
+  gap: 22px;
+}
+.docs-header .desktop-nav a {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+.docs-header .github-link {
+  order: 2;
+}
+.docs-header .header-search-trigger {
+  order: 3;
+}
+.docs-header .menu-toggle {
+  order: -1;
+}
+.docs-main {
+  padding-bottom: 0;
+}
+.docs-breadcrumb {
+  font-size: 14px !important;
+  margin-bottom: 20px;
+}
+.doc-brand {
+  color: var(--accent);
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.doc-heading {
+  margin-bottom: 42px;
+}
+.doc-heading p:last-child {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+.doc-section {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 44px;
+  margin-bottom: 40px;
+  scroll-margin-top: 106px;
+}
+.doc-section h2 {
+  margin-top: 0;
+}
+.docs-navigation .docs-home {
+  margin-top: 28px;
+  padding: 12px 10px;
+}
+.docs-toc > p {
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.docs-toc > a {
+  padding: 0;
+  margin-bottom: 17px;
+}
+.doc-actions {
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+  padding-top: 16px;
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.doc-actions a,
+.doc-actions button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 0;
+  text-align: left;
+}
+.doc-actions i {
+  width: 19px;
+}
+.doc-actions summary {
+  padding: 10px 0;
+}
+.chat-providers {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.doc-actions-mobile,
+.docs-mobile-toc {
+  display: none;
+}
+.docs-next {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  margin: 0 0 40px;
+  font-size: 13px;
+}
+.docs-next span {
+  color: var(--muted);
+}
+.docs-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 36px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.code-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+}
+.code-block {
+  border-radius: 12px;
+}
+.code-block pre {
+  padding: 18px 0;
+  overflow: auto;
+  font: 12px/1.9 var(--mono);
+}
+.code-line {
+  white-space: pre;
+  padding-right: 24px;
+}
+.code-line > span {
+  display: inline-block;
+  width: 40px;
+  text-align: right;
+  padding-right: 16px;
+  color: var(--muted);
+  user-select: none;
+}
+.docs-drawer {
+  position: fixed;
+  inset: 66px auto 0 0;
+  margin: 0;
+  height: calc(100dvh - 66px);
+  max-height: none;
+  width: min(290px, 85vw);
+  padding: 20px 22px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 0;
+  border-right: 1px solid var(--line);
+}
+.docs-drawer::backdrop {
+  background: #30272355;
+}
+.docs-drawer .mobile-panel-heading {
+  padding: 0;
+  margin-bottom: 20px;
+}
+.docs-drawer .brand-sub,
+.docs-drawer .mobile-panel-footer {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .doc-actions-mobile {
+    display: block;
+    margin-bottom: 40px;
+  }
+}
+@media (min-width: 701px) {
+  .docs-header .menu-toggle {
+    display: none;
+  }
+  .docs-header .desktop-nav,
+  .docs-header .github-link {
+    display: flex;
+  }
+}
+@media (max-width: 700px) {
+  .docs-header {
+    padding-inline: 18px;
+  }
+  .docs-header .desktop-nav,
+  .docs-header .github-link {
+    display: none;
+  }
+  .docs-header .brand {
+    font-size: 20px;
+  }
+  .docs-header .menu-toggle {
+    font-size: 0;
+    padding: 8px 0;
+  }
+  .docs-header .menu-toggle::before {
+    content: '☰';
+    font-size: 20px;
+  }
+  .docs-mobile-toc {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 32px;
+    font-size: 12px;
+  }
+  .docs-mobile-toc nav {
+    display: grid;
+    gap: 12px;
+    padding-top: 16px;
+  }
+}
+
+.docs-header .header-search-trigger {
+  border-radius: 9px;
+  height: 38px;
+  padding: 0 12px;
+  font-size: 11px;
+}
+.docs-search-label {
+  white-space: nowrap;
+}
+.doc-brand {
+  font-size: 20px;
+  line-height: 24px;
+}
+.docs-navigation a {
+  line-height: 1.5;
+}
+@media (max-width: 700px) {
+  .docs-search-label {
+    display: none;
+  }
+}

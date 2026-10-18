@@ -16,7 +16,7 @@ import { useDownload } from '@/hooks/useDownload';
 
 export default function Home() {
   const [state, setState] = useState<CanvasState>({
-    foregroundColor: '#526447',
+    foregroundColor: '#a34329',
     backgroundColor: 'transparent',
     size: 85,
     stackedSize: 60,
@@ -58,7 +58,8 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <Link className="primary-link" href="#studio">
-              Create your favicon <span>↗</span>
+              Create your favicon{' '}
+              <i className="fa-solid fa-wand-magic-sparkles" aria-hidden="true" />
             </Link>
             <Link className="text-link" href="/docs/quick-start">
               How it works

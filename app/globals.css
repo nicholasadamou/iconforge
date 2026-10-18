@@ -5,15 +5,16 @@
 @import '../styles/editor.css';
 @import '../styles/studio.css';
 @import '../styles/docs.css';
+@import '../styles/docs-details.css';
 @import '../styles/color-picker.css';
 
 :root {
-  --paper: #f7f7f2;
-  --ink: #292b25;
-  --muted: #696d63;
-  --line: #e1e3d9;
-  --sage: #eceee5;
-  --accent: #526447;
+  --paper: #fbf7f2;
+  --ink: #302723;
+  --muted: #75665e;
+  --line: #e8dcd2;
+  --sage: #f3e8df;
+  --accent: #a34329;
   --sans: 'DM Sans Variable', sans-serif;
   --serif: Georgia, serif;
   --mono: ui-monospace, monospace;

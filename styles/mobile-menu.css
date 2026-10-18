@@ -41,7 +41,7 @@
   padding: 15px;
   margin: 22px 0;
   background: white;
-  border: 1px solid #cbd3c1;
+  border: 1px solid #dec5b5;
   border-radius: 12px;
   font-size: 13px;
   text-align: left;
@@ -53,8 +53,8 @@
   display: flex;
   align-items: center;
   gap: 13px;
-  background: #e9eddf;
-  border: 1px solid #d7dfcb;
+  background: #f4e5d8;
+  border: 1px solid #ead2c0;
   padding: 19px 16px;
   border-radius: 16px;
 }
@@ -109,11 +109,11 @@
   line-height: 1.6;
 }
 .mobile-primary a[aria-current='page'] {
-  border-color: #a5b696;
+  border-color: #c18e74;
 }
 .mobile-primary a:hover,
 .mobile-tasks a:hover {
-  background: #e9eddf;
+  background: #f4e5d8;
   color: var(--ink);
 }
 .mobile-section-label {
@@ -154,7 +154,7 @@
 .mobile-starter {
   padding: 22px;
   border-radius: 16px;
-  background: #eceee5;
+  background: #f3e8df;
   margin-top: 24px;
 }
 .mobile-starter h3 {

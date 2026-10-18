@@ -11,8 +11,8 @@ Small icon. Big character. Create favicons with 1,895 Font Awesome icons, live c
 [![Next.js](https://img.shields.io/badge/Next.js-16-292b25?logo=nextdotjs)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Bun](https://img.shields.io/badge/Bun-1.3-292b25?logo=bun)](https://bun.sh)
-[![Flox](https://img.shields.io/badge/Environment-Flox-526447)](https://flox.dev)
-[![License](https://img.shields.io/badge/License-PolyForm_Shield-526447)](LICENSE)
+[![Flox](https://img.shields.io/badge/Environment-Flox-a34329)](https://flox.dev)
+[![License](https://img.shields.io/badge/License-PolyForm_Shield-a34329)](LICENSE)
 
 ## Run locally
 

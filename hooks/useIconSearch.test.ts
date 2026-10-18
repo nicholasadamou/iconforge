@@ -64,8 +64,8 @@ describe('useIconSearch', () => {
     });
 
     expect(result.current.filteredIcons).toHaveLength(2);
-    expect(result.current.filteredIcons.map(i => i.id)).toContain('heart');
-    expect(result.current.filteredIcons.map(i => i.id)).toContain('star');
+    expect(result.current.filteredIcons.map((i) => i.id)).toContain('heart');
+    expect(result.current.filteredIcons.map((i) => i.id)).toContain('star');
   });
 
   it('should return empty array for non-matching search', () => {
@@ -107,6 +107,6 @@ describe('useIconSearch', () => {
     });
 
     expect(result.current.filteredIcons.length).toBeGreaterThanOrEqual(1);
-    expect(result.current.filteredIcons.some(i => i.id === 'user')).toBe(true);
+    expect(result.current.filteredIcons.some((i) => i.id === 'user')).toBe(true);
   });
 });

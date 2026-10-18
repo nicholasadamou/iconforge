@@ -1,121 +1,85 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '../styles/shell.css';
+@import '../styles/search.css';
+@import '../styles/mobile-menu.css';
+@import '../styles/editor.css';
+@import '../styles/studio.css';
+@import '../styles/docs.css';
+@import '../styles/docs-details.css';
+@import '../styles/color-picker.css';
+@import '../styles/workspace.css';
+@import '../styles/marketing.css';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fbf7f2;
+  --ink: #302723;
+  --muted: #75665e;
+  --line: #e8dcd2;
+  --sage: #f3e8df;
+  --accent: #a34329;
+  --sans: 'DM Sans Variable', sans-serif;
+  --serif: Georgia, serif;
+  --mono: ui-monospace, monospace;
+  color-scheme: light;
 }
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-raleway);
+  --font-sans: var(--sans);
 }
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-raleway), 'Raleway', sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.65 var(--sans);
 }
-
-/* React Colorful Styles */
-.react-colorful {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 200px;
-  user-select: none;
-  cursor: default;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 105px;
 }
-
-.react-colorful__saturation {
-  position: relative;
-  flex-grow: 1;
-  border-color: transparent;
-  border-bottom: 12px solid #000;
-  border-radius: 8px 8px 0 0;
-  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0)),
-    linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+a {
+  text-decoration: none;
+  color: inherit;
 }
-
-.react-colorful__pointer-fill,
-.react-colorful__alpha-gradient {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  border-radius: inherit;
+button,
+input {
+  font: inherit;
 }
-
-.react-colorful__alpha-gradient,
-.react-colorful__saturation {
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+button,
+summary {
+  cursor: pointer;
 }
-
-.react-colorful__hue,
-.react-colorful__alpha {
-  position: relative;
-  height: 24px;
+button:disabled {
+  cursor: wait;
 }
-
-.react-colorful__hue {
-  background: linear-gradient(
-    to right,
-    #f00 0%,
-    #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    #f00 100%
-  );
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
-
-.react-colorful__last-control {
-  border-radius: 0 0 8px 8px;
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 550;
 }
-
-.react-colorful__interactive {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  outline: none;
-  touch-action: none;
+em {
+  font-family: var(--serif);
+  color: var(--accent);
+  font-weight: 400;
 }
-
-.react-colorful__pointer {
-  position: absolute;
-  z-index: 1;
-  box-sizing: border-box;
-  width: 28px;
-  height: 28px;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent);
 }
-
-.react-colorful__interactive:focus .react-colorful__pointer {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.react-colorful__alpha,
-.react-colorful__alpha-pointer {
-  background-color: #fff;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><rect x="8" width="8" height="8"/><rect y="8" width="8" height="8"/></svg>');
-}
-
-.react-colorful__saturation-pointer {
-  z-index: 3;
-}
-
-.react-colorful__hue-pointer {
-  z-index: 2;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

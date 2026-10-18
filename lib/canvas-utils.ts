@@ -2,10 +2,7 @@ import { Icon, CanvasState } from '@/types/icon';
 
 const CANVAS_SIZE = 512;
 
-export function drawIcon(
-  canvas: HTMLCanvasElement,
-  state: CanvasState
-): void {
+export function drawIcon(canvas: HTMLCanvasElement, state: CanvasState): void {
   const ctx = canvas.getContext('2d');
   if (!ctx || !state.icon) return;
 
@@ -48,7 +45,7 @@ export function drawIcon(
   const fontFamily = getFontFamily(state.icon);
   const fontWeight = getFontWeight(state.icon);
   ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-  
+
   // Create mask for transparent icon
   ctx.fillStyle = 'rgba(0, 0, 0, 1)';
   ctx.globalCompositeOperation = 'destination-out';

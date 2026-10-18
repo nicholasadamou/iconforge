@@ -11,6 +11,8 @@ jest.mock('@/lib/canvas-utils', () => ({
   canvasToBlob: jest.fn(() => Promise.resolve(new Blob())),
 }));
 
+jest.mock('@/lib/ico', () => ({ canvasToIco: jest.fn(() => Promise.resolve(new Blob())) }));
+
 describe('useDownload', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -82,8 +84,8 @@ describe('useDownload', () => {
   });
 
   it('should handle download errors gracefully', async () => {
-    const { canvasToBlob } = require('@/lib/canvas-utils');
-    canvasToBlob.mockRejectedValueOnce(new Error('Download failed'));
+    const { canvasToIco } = require('@/lib/ico');
+    canvasToIco.mockRejectedValueOnce(new Error('Download failed'));
 
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     const { result } = renderHook(() => useDownload());

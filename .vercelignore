@@ -24,5 +24,10 @@ jest.setup.js
 
 # Misc
 .DS_Store
-README.md
 TESTING.md
+
+# Local toolchain and verification artifacts
+.flox
+.website-studio
+playwright-report
+test-results

@@ -1,0 +1,14 @@
+node_modules
+.next
+.flox/cache
+.flox/run
+.flox/log
+.flox/env/manifest.lock
+.website-studio
+coverage
+playwright-report
+test-results
+lib/icons.ts
+bun.lock
+next-env.d.ts
+public/*.svg

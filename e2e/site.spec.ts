@@ -137,6 +137,7 @@ test('studio fills the viewport and mobile panels retain the design', async ({ p
   await page.getByRole('button', { name: '1. Choose an icon' }).click();
   await expect(page.getByLabel('Find your shape')).toHaveValue('leaf');
   await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });
 

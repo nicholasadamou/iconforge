@@ -5,7 +5,8 @@ import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import DocsNav from '@/components/DocsNav';
-import DocActions, { CodeBlock } from '@/components/DocActions';
+import DocActions from '@/components/DocActions';
+import CodeBlock from '@/components/CodeBlock';
 import Diagram from '@/components/Diagram';
 import { docPages, docHref } from '@/lib/doc-pages';
 

@@ -40,28 +40,3 @@ export default function DocActions({ content, slug }: { content: string; slug: s
     </div>
   );
 }
-
-export function CodeBlock({ source, language }: { source: string; language: string }) {
-  return (
-    <div className="code-block">
-      <div className="code-heading">
-        <span>{language || 'text'}</span>
-        <CopyButton text={source} />
-      </div>
-      <pre>
-        <code>
-          {source
-            .trimEnd()
-            .split('\n')
-            .map((line, index) => (
-              <span className="code-line" key={index}>
-                <span aria-hidden="true">{index + 1}</span>
-                {line}
-                {'\n'}
-              </span>
-            ))}
-        </code>
-      </pre>
-    </div>
-  );
-}

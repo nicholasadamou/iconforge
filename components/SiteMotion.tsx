@@ -27,7 +27,7 @@ export default function SiteMotion() {
     };
     const start = () => {
       stop();
-      if (preference.matches) return;
+      if (preference.matches || document.hidden) return;
       const content = document.querySelector('main');
       if (content) animate(content, [{ opacity: 0.6 }, { opacity: 1 }], 280);
       if (pathname !== '/') return;
@@ -64,9 +64,11 @@ export default function SiteMotion() {
 
     start();
     preference.addEventListener('change', start);
+    document.addEventListener('visibilitychange', start);
     return () => {
       stop();
       preference.removeEventListener('change', start);
+      document.removeEventListener('visibilitychange', start);
     };
   }, [pathname]);
 

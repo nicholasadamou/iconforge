@@ -29,7 +29,9 @@ export default function SiteMotion() {
       stop();
       if (preference.matches || document.hidden) return;
       const content = document.querySelector('main');
-      if (content) animate(content, [{ opacity: 0.6 }, { opacity: 1 }], 280);
+      if (content && pathname !== '/studio') {
+        animate(content, [{ opacity: 0.6 }, { opacity: 1 }], 280);
+      }
       if (pathname !== '/') return;
 
       // Observe only offscreen sections; content stays visible without JavaScript.

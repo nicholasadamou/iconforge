@@ -59,6 +59,7 @@ test('mobile menu, search, keyboard dismissal, and reflow', async ({ page }) => 
 
 for (const doc of docPages) {
   test(`documentation: ${doc.title}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     const response = await page.goto(docHref(doc.slug));
     expect(response?.status()).toBe(200);
     await expect(page.locator('main h1')).toBeVisible();
@@ -71,6 +72,7 @@ for (const doc of docPages) {
 }
 
 test('home accessibility, assets, and unknown-page recovery', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   for (const asset of ['/logo.svg', '/og.png']) {

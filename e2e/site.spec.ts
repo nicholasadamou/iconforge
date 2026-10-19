@@ -153,11 +153,13 @@ test('chat providers include the current documentation and open separately', asy
     expect(prompt).toContain('Help me use IconForge');
     expect(prompt).toContain('# Quick start');
     await expect(link).toHaveAttribute('target', '_blank');
-    expect(
-      await link
-        .locator('img')
-        .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
-    ).toBe(true);
+    await expect
+      .poll(() =>
+        link
+          .locator('img')
+          .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+      )
+      .toBe(true);
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const mobile = page.locator('.doc-actions-mobile .chat-disclosure');

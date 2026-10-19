@@ -1,6 +1,4 @@
-<p align="center"><img src="public/logo.svg" width="64" height="64" alt="IconForge logo" /></p>
-
-# IconForge
+# <img src="public/logo.svg" width="32" height="32" alt="" /> IconForge
 
 Small icon. Big character. Create favicons with 1,895 Font Awesome icons, live color and size controls, stacking, and browser-based PNG and ICO exports.
 

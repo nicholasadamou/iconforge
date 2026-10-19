@@ -33,6 +33,8 @@
 }
 .studio-app .editor-controls {
   min-height: 0;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   overflow: auto;
   align-content: start;
   gap: 10px;
@@ -125,4 +127,21 @@
     width: 100%;
     margin: 0;
   }
+}
+
+.studio-app .editor-controls > *,
+.studio-app .control-card {
+  min-width: 0;
+}
+.download-controls,
+.download-options {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+}
+.download-options {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.download-options > button {
+  justify-content: space-between;
 }

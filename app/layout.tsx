@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SiteMotion from '@/components/SiteMotion';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://iconforge-gamma.vercel.app'),
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         {children}
         <Footer />
+        <SiteMotion />
       </body>
     </html>
   );

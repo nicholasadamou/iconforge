@@ -1,0 +1,25 @@
+@media (prefers-reduced-motion: no-preference) {
+  .primary-link,
+  .idea-cards > a,
+  .github-link {
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  @media (hover: hover) {
+    .primary-link:hover,
+    .idea-cards > a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px #3027230a;
+    }
+    .idea-cards > a:hover {
+      border-color: var(--accent);
+    }
+  }
+  .primary-link:active,
+  .idea-cards > a:active {
+    transform: translateY(0);
+  }
+}

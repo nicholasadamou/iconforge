@@ -59,6 +59,7 @@ test('mobile menu, search, keyboard dismissal, and reflow', async ({ page }) => 
 
 for (const doc of docPages) {
   test(`documentation: ${doc.title}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     const response = await page.goto(docHref(doc.slug));
     expect(response?.status()).toBe(200);
     await expect(page.locator('main h1')).toBeVisible();
@@ -71,6 +72,7 @@ for (const doc of docPages) {
 }
 
 test('home accessibility, assets, and unknown-page recovery', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   for (const asset of ['/logo.svg', '/og.png']) {
@@ -151,11 +153,13 @@ test('chat providers include the current documentation and open separately', asy
     expect(prompt).toContain('Help me use IconForge');
     expect(prompt).toContain('# Quick start');
     await expect(link).toHaveAttribute('target', '_blank');
-    expect(
-      await link
-        .locator('img')
-        .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
-    ).toBe(true);
+    await expect
+      .poll(() =>
+        link
+          .locator('img')
+          .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+      )
+      .toBe(true);
   }
   await page.setViewportSize({ width: 390, height: 844 });
   const mobile = page.locator('.doc-actions-mobile .chat-disclosure');

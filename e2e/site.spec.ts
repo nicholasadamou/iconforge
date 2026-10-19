@@ -62,8 +62,8 @@ for (const doc of docPages) {
     const response = await page.goto(docHref(doc.slug));
     expect(response?.status()).toBe(200);
     await expect(page.locator('main h1')).toBeVisible();
-    if (['', 'architecture', 'customization'].includes(doc.slug)) {
-      await expect(page.locator('.diagram svg').first()).toBeVisible();
+    for (const diagram of await page.locator('.diagram').all()) {
+      await expect(diagram.locator('svg')).toBeVisible();
     }
     const audit = await new AxeBuilder({ page }).analyze();
     expect(audit.violations).toEqual([]);
@@ -136,4 +136,51 @@ test('studio fills the viewport and mobile panels retain the design', async ({ p
   await expect(page.getByLabel('Find your shape')).toHaveValue('leaf');
   await page.setViewportSize({ width: 1440, height: 900 });
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+});
+
+test('chat providers include the current documentation and open separately', async ({ page }) => {
+  await page.goto('/docs/quick-start');
+  const control = page.locator('.docs-toc .chat-disclosure');
+  await control.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await expect(control.locator('.chat-providers a')).toHaveCount(6);
+  for (const link of await control.locator('.chat-providers a').all()) {
+    const url = new URL((await link.getAttribute('href'))!);
+    const prompt =
+      url.searchParams.get('prompt') || url.searchParams.get('q') || url.searchParams.get('text');
+    expect(prompt).toContain('Help me use IconForge');
+    expect(prompt).toContain('# Quick start');
+    await expect(link).toHaveAttribute('target', '_blank');
+    expect(
+      await link
+        .locator('img')
+        .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
+    ).toBe(true);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobile = page.locator('.doc-actions-mobile .chat-disclosure');
+  await mobile.locator('summary').click();
+  await expect(mobile.getByRole('link', { name: 'Cursor', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('documentation highlights code on the server and copies untouched source', async ({
+  page,
+  context,
+}) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const response = await page.goto('/docs/exporting');
+  expect(await response!.text()).toContain('hljs-keyword');
+  const block = page
+    .locator('.code-block')
+    .filter({ has: page.locator('.code-heading', { hasText: 'typescript' }) });
+  await expect(block.locator('.hljs-keyword').first()).toBeVisible();
+  await block.getByRole('button', { name: 'Copy', exact: true }).click();
+  const copied = await page.evaluate(() => navigator.clipboard.readText());
+  expect(copied).toContain("import type { Metadata } from 'next';");
+  expect(copied).not.toContain('hljs-');
+  expect(copied).not.toMatch(/^1/);
+  await expect(page.locator('.highlighted-code link')).toHaveCount(0);
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

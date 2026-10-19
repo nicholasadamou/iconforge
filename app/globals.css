@@ -6,6 +6,8 @@
 @import '../styles/studio.css';
 @import '../styles/docs.css';
 @import '../styles/docs-details.css';
+@import '../styles/chat-providers.css';
+@import '../styles/syntax.css';
 @import '../styles/color-picker.css';
 @import '../styles/workspace.css';
 @import '../styles/marketing.css';

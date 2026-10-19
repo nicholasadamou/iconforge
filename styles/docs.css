@@ -181,6 +181,10 @@
   display: none;
 }
 .diagram {
+  margin: 24px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
   background: white;
 }
 .diagram figcaption,

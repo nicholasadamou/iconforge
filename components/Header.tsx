@@ -51,12 +51,7 @@ export default function Header() {
             >
               {isDocs ? 'Export reference' : 'Create an icon'}
             </Link>
-            <Link
-              href="/docs/quick-start"
-              aria-current={pathname === '/docs/quick-start' ? 'page' : undefined}
-            >
-              Getting started
-            </Link>
+            <Link href="/#getting-started">Getting started</Link>
             {!isDocs && (
               <Link href="/docs" aria-current={pathname === '/docs' ? 'page' : undefined}>
                 Documentation
@@ -122,7 +117,7 @@ export default function Header() {
                 </span>
               </Link>
               <div className="mobile-resource-grid">
-                <Link href="/docs/quick-start">
+                <Link href="/#getting-started">
                   <strong>Getting started</strong>
                   <small>From an icon to your first favicon.</small>
                 </Link>

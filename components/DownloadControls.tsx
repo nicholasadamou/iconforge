@@ -56,7 +56,7 @@ export default function DownloadControls({
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="download-controls">
       <button
         onClick={onDownload}
         disabled={downloading}
@@ -90,7 +90,7 @@ export default function DownloadControls({
           'Download'
         )}
       </button>
-      <div className="flex gap-2">
+      <div className="download-options">
         <button
           onClick={onFormatChange}
           disabled={downloading}

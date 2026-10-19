@@ -82,7 +82,7 @@ export default function MarketingSections() {
             ['mug-hot', 'The personal blog', 'A little space of your own.'],
             ['seedling', 'The fresh start', 'Give a new idea room to grow.'],
           ].map(([icon, title, copy]) => (
-            <Link href="/studio" key={icon}>
+            <Link href={`/studio?icon=${icon}`} key={icon}>
               <i className={`fa-solid fa-${icon}`} aria-hidden="true" />
               <div>
                 <h3>{title}</h3>
